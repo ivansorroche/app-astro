@@ -22,9 +22,18 @@ export default function Search({ searchList }) {
     }
 
     return (
-        <>
-        <label htmlFor='search' className='sr-only'>Search Post</label>
-        <input placeholder='Search Post' id='search' type='text' value={query} onChange={handleOnSearch} />
+        <div className='p-7'>
+        <label htmlFor='search' className='sr-only'>
+            Search Post
+        </label>
+        <input
+            className='block p-4 w-full border text-sm text-gray-900 rounded border-gray-300 mt-4 pl-4'
+            placeholder='Search Post'
+            id='search'
+            type='text'
+            value={query}
+            onChange={handleOnSearch}
+        />
 
         {query.length > 1 && (
             <p>
@@ -34,14 +43,15 @@ export default function Search({ searchList }) {
 
         <ul>
             {posts && posts.map(post => {
+                {console.log(post)}
                 return (
-                <li>
-                    <a href='#'>{post.data.title}</a>
-                    <p>{post.data.description}</p>
+                <li className='py-4'>
+                    <a className='text-gray-900' href={`/blog/${post.id}`}>{post.data.title}</a>
+                    <p className='text-sm test-gray-700'>{post.data.description}</p>
                 </li>
                 )
             })}
         </ul>
-        </>
+        </div>
     )
 }
